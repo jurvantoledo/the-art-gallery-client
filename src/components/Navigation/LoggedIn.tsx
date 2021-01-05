@@ -1,9 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../../store/user/actions";
-import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
 import NavbarItem from "./NavbarItem";
+import "./navigation.scss";
+import { Button } from "react-bootstrap";
+
 
 export default function LoggedIn() {
   const dispatch = useDispatch();
@@ -16,8 +18,8 @@ export default function LoggedIn() {
 
   return (
     <>
-      <NavbarItem path="/profile" linkText="Profile" />
-      <Button variant="secondary" onClick={() => onClickLogOut()}>
+      <NavbarItem path="/" linkText="Other" />
+      <Button onClick={() => onClickLogOut()}>
         Logout
       </Button>
     </>

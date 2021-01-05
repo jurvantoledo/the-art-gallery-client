@@ -57,7 +57,7 @@ export default function Login() {
               />
             </Form.Group>
             <Form.Group className="mt-5">
-              <Button variant="success" type="submit" onClick={submitForm}>
+              <Button type="submit" onClick={submitForm}>
                 Log in
               </Button>
             </Form.Group>
