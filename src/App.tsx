@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import MessageBox from './components/MessageBox';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Homepage from './pages/Homepage';
 
 
 function App() {
@@ -24,7 +25,9 @@ function App() {
       <MessageBox />
       <div className="App-Content">
         <Switch>
-          <Route exact path="/">Home</Route>
+          <Route exact path="/">
+            <Homepage />
+            </Route>
           
           <Route exact path="/login">
             <Login />
