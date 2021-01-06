@@ -6,4 +6,15 @@
 
 .art-gallery-card.card.col-md-3 {
   margin: 0 15px;
+  padding: 0;
+}
+
+.gallery-image {
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+}
+
+.gallery-details {
+  padding: 0 15px;
 }

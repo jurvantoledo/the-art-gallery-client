@@ -9,6 +9,7 @@ export interface GalleryState {
 export interface Gallery {
     id: number;
     name: string;
+    imageUrl: string
     description?: string;
     userId?: number;
     createdAt: string;
