@@ -14,18 +14,23 @@ import {
 } from "./types"
 
 
-const addAllGalleries = (allGalleries: Gallery[]): GalleryActionTypes => {
-    return { type: ADD_ALL_GALLERIES, payload: allGalleries };
+const addAllGalleries = (galleries: Gallery[]): GalleryActionTypes => {
+    return { 
+        type: ADD_ALL_GALLERIES, 
+        payload: galleries 
+    };
   };
 
   export const fetchAllGalleries = (): AppThunk => {
       return async (dispatch, getState) => {
-          dispatch(appDoneLoading)
-
+          dispatch(appLoading)
           try {
               const response = await axios.get(`${apiUrl}/gallery`)
 
-              dispatch(addAllGalleries(response.data))
+              const galleries = response.data.galleries
+              console.log(response.data)
+              dispatch(addAllGalleries(galleries))
+              dispatch(appDoneLoading)
           } catch (error) {
               if(error.response) {
                   console.log(error.response.data.message)

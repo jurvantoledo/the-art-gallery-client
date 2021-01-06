@@ -1,3 +1,5 @@
+import { User } from "../user/types"
+
 export const ADD_ALL_GALLERIES = "ADD_ALL_GALLERIES"
 
 export interface GalleryState {
@@ -11,6 +13,7 @@ export interface Gallery {
     userId?: number;
     createdAt: string;
     updatedAt: string;
+    user: User;
 }
 
 interface AddAllGalleriesAction {

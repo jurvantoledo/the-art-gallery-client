@@ -5,14 +5,14 @@ import {
 } from "./types"
 
 const initialState: GalleryState = {
-    all: []
+    all: [],
 }
 
 export default (state = initialState, action: GalleryActionTypes) => {
     switch(action.type) {
         case ADD_ALL_GALLERIES:
-            return {...state, all: action.payload}
-
+            return { ...state, all: action.payload };
+            
         default:
             return state;
     }
