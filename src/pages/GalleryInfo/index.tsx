@@ -27,8 +27,10 @@ export default function GalleryInfo() {
     }, [dispatch, id])
 
     return (
+    <>
         <Jumbotron>
             <h2>{galleryDetails.name}</h2>
         </Jumbotron>
+    </>
     )
 }
