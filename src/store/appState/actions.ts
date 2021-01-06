@@ -6,9 +6,6 @@ import {
   SET_MESSAGE,
   CLEAR_MESSAGE,
 } from "./types";
-import { Action } from "redux";
-import { RootState } from "../rootReducer";
-import { ThunkAction } from "redux-thunk";
 import { AppThunk } from "../types";
 
 export const appLoading = () => ({ type: APP_LOADING });
