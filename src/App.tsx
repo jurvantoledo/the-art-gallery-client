@@ -9,6 +9,7 @@ import MessageBox from './components/MessageBox';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Homepage from './pages/Homepage';
+import GalleryInfo from './pages/GalleryInfo';
 
 
 function App() {
@@ -27,6 +28,10 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Homepage />
+          </Route>
+
+          <Route exact path="/gallery-info/:id">
+            <GalleryInfo />
           </Route>
           
           <Route exact path="/login">

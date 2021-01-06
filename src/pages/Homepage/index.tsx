@@ -3,8 +3,9 @@ import {
     Card, 
     Col, 
     Container,
-    Button 
+    Button,
 } from "react-bootstrap"
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
 import { fetchAllGalleries } from "../../store/gallery/actions"
 import { selectAllGalleries } from "../../store/gallery/selectors"
@@ -38,9 +39,11 @@ export default function Homepage() {
                     <h2>{gallery.name}</h2>
                     <p>{gallery.description}</p>
                 </div>
-                <Button>
+                 <Link to={`gallery-info/${gallery.id}`}>
+                  <Button>
                     More Info
-                </Button>
+                  </Button>
+                 </Link>
                 </Card>
             )
         })}
