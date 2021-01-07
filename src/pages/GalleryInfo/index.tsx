@@ -54,6 +54,9 @@ export default function GalleryInfo() {
                     <p><strong>Price:</strong>< br/>
                     {art.price}</p>
                 </div>
+                <Button>
+                    Buy
+                </Button>
                 </Card>
                 )
             })}
