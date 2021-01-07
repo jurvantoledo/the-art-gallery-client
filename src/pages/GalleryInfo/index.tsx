@@ -22,8 +22,6 @@ export default function GalleryInfo() {
     const galleryDetails = useSelector(selectGalleryDetails)
     const { id } = params;
 
-    console.log("this is console log",galleryDetails)
-
     useEffect(() => {
         dispatch(fetchGalleryDetails(parseInt(id)))
 
