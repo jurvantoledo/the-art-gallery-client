@@ -2,6 +2,7 @@ import {
     ADD_ALL_GALLERIES, 
     ADD_GALLERY_DETAILS,
     ADD_NEW_ARTWORK,
+    REMOVE_ARTWORK,
     GalleryState,
     GalleryActionTypes
 } from "./types"

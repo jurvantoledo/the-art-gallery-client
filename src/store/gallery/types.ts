@@ -4,6 +4,7 @@ import { User } from "../user/types"
 export const ADD_ALL_GALLERIES = "ADD_ALL_GALLERIES"
 export const ADD_GALLERY_DETAILS = "ADD_GALLERY_DETAILS"
 export const ADD_NEW_ARTWORK = "ADD_NEW_ARTWORK"
+export const REMOVE_ARTWORK = "REMOVE_ARTWORK"
 
 export interface GalleryState {
     all: Gallery[]
@@ -37,8 +38,14 @@ interface AddGalleryDetailsAction {
     payload: ArtWorks;
 }
 
+interface RemoveArtWorkAction {
+    type: typeof REMOVE_ARTWORK,
+    payload: ArtWorks[]
+}
+
 export type GalleryActionTypes =
 | AddAllGalleriesAction
 | AddGalleryDetailsAction
 | AddNewArtWorkAction
+| RemoveArtWorkAction
  

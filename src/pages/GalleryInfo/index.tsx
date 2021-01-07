@@ -9,7 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router";
 import AddArtWorkForm from "../../components/AddArtWorkForm";
-import { fetchGalleryDetails } from "../../store/gallery/actions"
+import { deleteArtWork, fetchGalleryDetails } from "../../store/gallery/actions"
 import { selectGalleryDetails } from "../../store/gallery/selectors"
 import "./galleryInfo.scss"
 
@@ -27,6 +27,11 @@ export default function GalleryInfo() {
         dispatch(fetchGalleryDetails(parseInt(id)))
 
     }, [dispatch, id])
+
+    const onDelete = (id: any) => {
+        console.log("deleting element!", id);
+        dispatch(deleteArtWork(id));
+      };
 
     return (
     <>
@@ -54,6 +59,13 @@ export default function GalleryInfo() {
                     <p><strong>Price:</strong>< br/>
                     {art.price}</p>
                 </div>
+                <Button
+                    className="element-remove-button" 
+                    data-text="Remove"
+                    onClick={() => dispatch(deleteArtWork(art.id))}
+                    >
+                        Remove
+                    </Button>
                 <Button>
                     Buy
                 </Button>

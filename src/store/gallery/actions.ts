@@ -11,12 +11,14 @@ import {
     ADD_ALL_GALLERIES,
     ADD_GALLERY_DETAILS,
     ADD_NEW_ARTWORK,
+    REMOVE_ARTWORK,
     Gallery,
     GalleryActionTypes,
 } from "./types"
-import { ArtWorks } from "../artWork/types";
+import { ArtWorkActionTypes, ArtWorks } from "../artWork/types";
 import { selectToken } from "../user/selectors";
 import { selectGalleryDetails } from "./selectors";
+import { getUserWithStoredToken } from "../user/actions";
 
 
 const addAllGalleries = (galleries: Gallery[]): GalleryActionTypes => {
@@ -122,5 +124,35 @@ const addAllGalleries = (galleries: Gallery[]): GalleryActionTypes => {
         dispatch(appDoneLoading());
       }
     }
+  }
+
+  const removeArtWork = (newArtWorkList: ArtWorks[]): ArtWorkActionTypes => {
+    return { 
+        type: REMOVE_ARTWORK, 
+        payload: newArtWorkList 
+    };
+  };
+
+  export const deleteArtWork = (id: number) : AppThunk => {
+      return async (dispatch, getState) => {
+          dispatch(appLoading())
+          const token = selectToken(getState())
+
+          try {
+              const response = await axios.delete(`${apiUrl}/work/${id}`,
+              {
+                  headers: { Authorization: `Bearer ${token}`}
+              })
+              console.log("this is response", response);
+              dispatch(getUserWithStoredToken());
+              dispatch(appDoneLoading()); 
+          } catch (error) {
+            if (error.response) {
+                console.log(error.response.message);
+              } else {
+                console.log(error);
+              }
+          }
+      }
   }
   
