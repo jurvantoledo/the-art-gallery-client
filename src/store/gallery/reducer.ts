@@ -1,6 +1,7 @@
 import { 
     ADD_ALL_GALLERIES, 
     ADD_GALLERY_DETAILS,
+    ADD_NEW_ARTWORK,
     GalleryState,
     GalleryActionTypes
 } from "./types"
@@ -26,6 +27,12 @@ export default (state = initialState, action: GalleryActionTypes) => {
             return {
             ...state,
             galleryDetails: {...state.galleryDetails, ...action.payload}
+            }
+
+        case ADD_NEW_ARTWORK:
+            return {
+                ...state,
+                galleryDetails: {...state.galleryDetails, ...action.payload}
             }
 
         default:

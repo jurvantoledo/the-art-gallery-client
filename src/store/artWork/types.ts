@@ -1,4 +1,5 @@
 export const ADD_ALL_ARTWORKS = "ADD_ALL_ARTWORKS"
+export const REMOVE_ARTWORK = "REMOVE_ARTWORK"
 
 export interface GalleryState {
     all: ArtWorks[]
@@ -20,5 +21,11 @@ interface AddAllArtWorkActions {
     payload: ArtWorks[]
 }
 
+interface RemoveArtWorkAction {
+    type: typeof REMOVE_ARTWORK,
+    payload: ArtWorks[]
+}
+
 export type ArtWorkActionTypes =
 | AddAllArtWorkActions
+| RemoveArtWorkAction

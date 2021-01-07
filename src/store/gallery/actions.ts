@@ -10,9 +10,13 @@ import {
 import {
     ADD_ALL_GALLERIES,
     ADD_GALLERY_DETAILS,
+    ADD_NEW_ARTWORK,
     Gallery,
     GalleryActionTypes,
 } from "./types"
+import { ArtWorks } from "../artWork/types";
+import { selectToken } from "../user/selectors";
+import { selectGalleryDetails } from "./selectors";
 
 
 const addAllGalleries = (galleries: Gallery[]): GalleryActionTypes => {
@@ -72,4 +76,51 @@ const addAllGalleries = (galleries: Gallery[]): GalleryActionTypes => {
       dispatch(appDoneLoading());
     };
   };
+
+  const addNewArtWork = (newArtWork: ArtWorks): GalleryActionTypes => {
+    return { 
+      type: ADD_NEW_ARTWORK, 
+      payload: newArtWork 
+    };
+  };
+
+  export const submitNewArtWork = (
+    name: string,
+    description: string,
+    image: string,
+    price: string
+  ) : AppThunk => {
+    return async (dispatch, getState) => {
+      dispatch(appLoading())
+      const token = selectToken(getState())
+      const { id } = selectGalleryDetails(getState())
+
+      try {
+        const response = await axios.post(`${apiUrl}/gallery/${id}`, 
+        {
+          name,
+          description,
+          image,
+          price
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+        );
+
+        dispatch(addNewArtWork(response.data))
+        dispatch(showMessageWithTimeout("succes", true, "Item succesfully added."))
+        dispatch(appDoneLoading())
+      } catch (error) {
+        if(error.response) {
+          console.log(error.message)
+          dispatch(setMessage("danger", true, error.response.data.message))
+        } else {
+          console.log(error.message)
+          dispatch(setMessage("danger", true, error.message))
+        }
+        dispatch(appDoneLoading());
+      }
+    }
+  }
   

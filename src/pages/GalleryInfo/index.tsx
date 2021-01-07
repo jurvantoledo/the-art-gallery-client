@@ -8,6 +8,7 @@ import {
 } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router";
+import AddArtWorkForm from "../../components/AddArtWorkForm";
 import { fetchGalleryDetails } from "../../store/gallery/actions"
 import { selectGalleryDetails } from "../../store/gallery/selectors"
 import "./galleryInfo.scss"
@@ -32,6 +33,7 @@ export default function GalleryInfo() {
         <Jumbotron className="title">
             <h2>{galleryDetails.name}</h2>
         </Jumbotron>
+         <AddArtWorkForm />
         <Container as={Col} md={{ span: 12 }} className="gallery-info" >
             {galleryDetails.artWorks?.map(art => {
                 return (
