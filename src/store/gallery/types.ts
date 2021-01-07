@@ -1,4 +1,4 @@
-import { ArtWork } from "../artWork/types"
+import { ArtWorks } from "../artWork/types"
 import { User } from "../user/types"
 
 export const ADD_ALL_GALLERIES = "ADD_ALL_GALLERIES"
@@ -18,7 +18,7 @@ export interface Gallery {
     createdAt: string;
     updatedAt: string;
     user?: User;
-    artWork?: ArtWork
+    artWorks?: ArtWorks[]
 }
 
 interface AddAllGalleriesAction {

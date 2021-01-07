@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router";
 import { fetchGalleryDetails } from "../../store/gallery/actions"
 import { selectGalleryDetails } from "../../store/gallery/selectors"
+import "./galleryInfo.scss"
 
 interface Parameters {
     id: string;
@@ -21,6 +22,8 @@ export default function GalleryInfo() {
     const galleryDetails = useSelector(selectGalleryDetails)
     const { id } = params;
 
+    console.log("this is console log",galleryDetails)
+
     useEffect(() => {
         dispatch(fetchGalleryDetails(parseInt(id)))
 
@@ -28,9 +31,30 @@ export default function GalleryInfo() {
 
     return (
     <>
-        <Jumbotron>
+        <Jumbotron className="title">
             <h2>{galleryDetails.name}</h2>
         </Jumbotron>
+        <Container as={Col} md={{ span: 12 }} >
+            {galleryDetails.artWorks?.map(art => {
+                return (
+                <Card 
+                key={art.id}
+                as={Col} 
+                md={{ span: 3 }}
+                className="art-gallery-card"
+                >
+                    <div 
+                    className="artWork-image"
+                    style={{backgroundImage: `url(${art.image})`}}
+                    ></div>
+                <div className="artWork-details">
+                    <h3>{art.name}</h3>
+                    <p>{art.description}</p>
+                </div>
+                </Card>
+                )
+            })}
+        </Container>
     </>
     )
 }

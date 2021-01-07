@@ -14,15 +14,6 @@ const initialState: GalleryState = {
     imageUrl: "",
     createdAt: "",
     updatedAt: "",
-    artWork: {
-      id: 0,
-      name: "",
-      image: "",
-      description: "",
-      galleryId: 0,
-      createdAt: "",
-      updatedAt: "",
-    },
     }
 }
 

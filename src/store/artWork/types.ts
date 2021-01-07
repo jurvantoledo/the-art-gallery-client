@@ -1,10 +1,10 @@
 export const ADD_ALL_ARTWORKS = "ADD_ALL_ARTWORKS"
 
 export interface GalleryState {
-    all: ArtWork[]
+    all: ArtWorks[]
 }
 
-export interface ArtWork {
+export interface ArtWorks {
     id: number;
     name: string;
     image: string
@@ -16,7 +16,7 @@ export interface ArtWork {
 
 interface AddAllArtWorkActions {
     type: typeof ADD_ALL_ARTWORKS,
-    payload: ArtWork[]
+    payload: ArtWorks[]
 }
 
 export type ArtWorkActionTypes =
