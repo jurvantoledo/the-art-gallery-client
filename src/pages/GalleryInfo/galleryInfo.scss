@@ -1,6 +1,7 @@
 .gallery-info.container.col-md-12 {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .artWork-image {
@@ -11,5 +12,6 @@
 }
 
 .artWork-details {
+  margin-top: 15px;
   padding: 0 15px;
 }
