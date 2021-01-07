@@ -9,6 +9,7 @@ export interface ArtWorks {
     name: string;
     image: string
     description?: string;
+    price?: string;
     galleryId?: number;
     createdAt: string;
     updatedAt: string;

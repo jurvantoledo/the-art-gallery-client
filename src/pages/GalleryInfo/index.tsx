@@ -49,7 +49,10 @@ export default function GalleryInfo() {
                     ></div>
                 <div className="artWork-details">
                     <h3>{art.name}</h3>
-                    <p>{art.description}</p>
+                    <p><strong>Description:</strong><br />
+                    {art.description}</p>
+                    <p><strong>Price:</strong>< br/>
+                    {art.price}</p>
                 </div>
                 </Card>
                 )
