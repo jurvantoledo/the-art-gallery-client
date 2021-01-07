@@ -34,7 +34,7 @@ export default function GalleryInfo() {
         <Jumbotron className="title">
             <h2>{galleryDetails.name}</h2>
         </Jumbotron>
-        <Container as={Col} md={{ span: 12 }} >
+        <Container as={Col} md={{ span: 12 }} className="gallery-info" >
             {galleryDetails.artWorks?.map(art => {
                 return (
                 <Card 
