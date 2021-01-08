@@ -7,6 +7,7 @@ import { selectToken } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
+import ImageUploader from "../../components/ImageUploader";
 
 export default function SignUp() {
   const [firstName, setFirstName] = useState("");
@@ -28,11 +29,15 @@ export default function SignUp() {
     }
   }, [token, history]);
 
+  const uploadImageUrl = (url: string) => {
+    setImageUrl(url);
+  };
+
   function submitForm(event: React.MouseEvent) {
     event.preventDefault();
 
     dispatch(
-      signUp(firstName, lastName, phone, country, city, imageUrl, email, password)
+      signUp(firstName, lastName, country, city, imageUrl, email, phone, password)
     );
 
     setFirstName("");
@@ -140,14 +145,28 @@ export default function SignUp() {
             </p>
           )}
           <Form.Group controlId="formBasicImageUrl">
-            <Form.Label>Profile picture url</Form.Label>
-            <Form.Control
-              value={imageUrl}
-              onChange={(event) => setImageUrl(event.target.value)}
-              type="text"
-              placeholder="Paste url"
+              <Form.Label>profile picture url</Form.Label>
+              <Form.Control
+                value={imageUrl}
+                onChange={(event) => setImageUrl(event.target.value)}
+                type="text"
+                placeholder="Paste url"
+              />
+            </Form.Group>
+            <ImageUploader
+              uploadPreset="plants"
+              uploadImageUrl={uploadImageUrl}
             />
-          </Form.Group>
+            {imageUrl ? (
+              <div style={{ margin: "1rem 0 0 0" }}>
+                <p style={{ fontSize: "0.8rem" }}>Image preview:</p>
+                <img
+                  className="new-image-preview"
+                  src={imageUrl}
+                  alt="profile pic"
+                />
+              </div>
+            ) : null}
           <Form.Group className="mt-5">
             {!email || !password ? (
               <p style={{ color: "red" }}>Enter email and password</p>

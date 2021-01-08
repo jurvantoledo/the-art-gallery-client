@@ -49,11 +49,11 @@ export const signUp = (
             const response = await axios.post(`${apiUrl}/signup`, {
                 firstName,
                 lastName,
+                email,
+                phone,
                 country,
                 city,
                 imageUrl,
-                email,
-                phone,
                 password,
             })
 
