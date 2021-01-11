@@ -19,7 +19,6 @@ export default function Homepage() {
         dispatch(fetchAllGalleries())
     }, [dispatch])
 
-    console.log(galleries)
     return (
     <div>
       <Container className="homepage-container-1" as={Col} md={{ span: 12 }}>
