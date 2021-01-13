@@ -60,7 +60,7 @@ export default function GalleryInfo() {
                     {art.price}</p>
                 </div>
                 <Button
-                    className="element-remove-button" 
+                    className="remove-button" 
                     data-text="Remove"
                     onClick={() => dispatch(deleteArtWork(art.id))}
                     >
