@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { Button, Form } from "react-bootstrap"
 import { useDispatch } from "react-redux"
 import { submitNewArtWork } from "../../store/gallery/actions"
+import ImageUploader from "../ImageUploader";
+
 
 export default function AddArtWorkForm() {
     const dispatch = useDispatch()
@@ -30,6 +32,10 @@ export default function AddArtWorkForm() {
         setEditForm(false);
       }
 
+      const uploadImageUrl = (url: string) => {
+        setImage(url);
+      };
+
     return (
         <>
             <div
@@ -38,7 +44,7 @@ export default function AddArtWorkForm() {
                 className="update-button"
                 onClick={(event) => (editForm ? setEditForm(false) : setEditForm(true))}  
             >
-               Add ArtWork 
+               Add your art here ! 
             </Button>
             </div>
             <div>
@@ -63,15 +69,29 @@ export default function AddArtWorkForm() {
                     placeholder="Enter description of art"
                   />
                  </Form.Group>
-                 <Form.Group controlId="formBasicFirstName">
-                  <Form.Label>Image</Form.Label>
-                  <Form.Control
-                    value={image}
-                    onChange={(event) => setImage(event.target.value)}
-                    type="text"
-                    placeholder="Enter picture"
-                  />
-                 </Form.Group>
+                 <Form.Group controlId="formBasicImageUrl">
+              <Form.Label>Art picture url</Form.Label>
+              <Form.Control
+                value={image}
+                onChange={(event) => setImage(event.target.value)}
+                type="text"
+                placeholder="Paste url"
+              />
+            </Form.Group>
+            <ImageUploader
+              uploadPreset="artWorks"
+              uploadImageUrl={uploadImageUrl}
+            />
+            {image ? (
+              <div style={{ margin: "1rem 0 0 0" }}>
+                <p style={{ fontSize: "0.8rem" }}>Image preview:</p>
+                <img
+                  className="new-image-preview"
+                  src={image}
+                  alt="artImage pic"
+                />
+              </div>
+            ) : null}
                  <Form.Group controlId="formBasicFirstName">
                   <Form.Label>Price</Form.Label>
                   <Form.Control
