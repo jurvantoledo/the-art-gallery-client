@@ -14,7 +14,7 @@ export interface Order {
     createdAt: string;
     updatedAt: string;
     user?: User;
-    artWorks?: ArtWorks;
+    artWorks?: ArtWorks[]
 }
 
 interface AddAllOrders {

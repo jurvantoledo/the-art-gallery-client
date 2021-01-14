@@ -28,7 +28,6 @@ const addOrders = (orders: Order[]): OrderActionTypes => {
         const response = await axios.get(`${apiUrl}/order/${id}`);
         const order = response.data.orders;
         
-        console.log("Action", order)
         dispatch(addOrders(order));
       } catch (error) {
         if (error.response) {
