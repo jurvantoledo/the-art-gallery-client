@@ -11,6 +11,7 @@ import { useParams } from "react-router";
 import AddArtWorkForm from "../../components/AddArtWorkForm";
 import { deleteArtWork, fetchGalleryDetails } from "../../store/gallery/actions"
 import { selectGalleryDetails } from "../../store/gallery/selectors"
+import { addOrder } from "../../store/order/actions";
 import "./galleryInfo.scss"
 
 interface Parameters {
@@ -32,6 +33,10 @@ export default function GalleryInfo() {
         console.log("deleting element!", id);
         dispatch(deleteArtWork(id));
       };
+
+      function handleClick(event: any){
+        dispatch(addOrder(event.target.value))
+      }
 
     return (
     <>
@@ -66,7 +71,7 @@ export default function GalleryInfo() {
                     >
                         Remove
                     </Button>
-                <Button>
+                <Button className="cart-button" variant="dark" value={art.id} onClick={handleClick}>
                     Buy
                 </Button>
                 </Card>

@@ -8,12 +8,13 @@ export const ADD_ORDER = "ADD_ORDER"
 
 export interface OrderState {
     orders: Order[]
+    
 }
 
 export interface Order {
     id: number;
     userId?: number;
-    quantity: number;
+    quantity?: any;
     createdAt: string;
     updatedAt: string;
     user?: User;
@@ -27,7 +28,7 @@ interface AddAllOrders {
 
 interface AddOrders {
     type: typeof ADD_ORDER,
-    payload: Order;
+    payload: Order[]
 }
 
 export type OrderActionTypes =

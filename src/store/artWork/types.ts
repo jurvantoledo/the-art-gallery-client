@@ -11,6 +11,7 @@ export interface ArtWorks {
     image: string
     description?: string;
     price?: string;
+    quantity?: any;
     galleryId?: number;
     createdAt: string;
     updatedAt: string;
