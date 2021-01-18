@@ -8,15 +8,23 @@ import {
   showMessageWithTimeout,
 } from "../appState/actions";
 import { 
-    ADD_ORDERS, 
+    ADD_ORDER,
+    ALL_ORDERS, 
     Order, 
     OrderActionTypes 
 } from "./types";
 
+export function addOrder(id: number) {
+  return {
+    type: ADD_ORDER,
+    payload: id,
+  };
+}
 
-const addOrders = (orders: Order[]): OrderActionTypes => {
+
+const allOrders = (orders: Order[]): OrderActionTypes => {
     return { 
-        type: ADD_ORDERS, 
+        type: ALL_ORDERS, 
         payload: orders 
     };
   };
@@ -28,7 +36,7 @@ const addOrders = (orders: Order[]): OrderActionTypes => {
         const response = await axios.get(`${apiUrl}/order/${id}`);
         const order = response.data.orders;
         
-        dispatch(addOrders(order));
+        dispatch(allOrders(order));
       } catch (error) {
         if (error.response) {
           console.log(error.response.data.message);

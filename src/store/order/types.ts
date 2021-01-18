@@ -2,7 +2,9 @@ import { ArtWorks } from "../artWork/types"
 import { User } from "../user/types"
 
 
-export const ADD_ORDERS = "ADD_ALL_ORDERS"
+export const ALL_ORDERS = "ALL_ORDERS"
+export const ADD_ORDER = "ADD_ORDER"
+
 
 export interface OrderState {
     orders: Order[]
@@ -11,6 +13,7 @@ export interface OrderState {
 export interface Order {
     id: number;
     userId?: number;
+    quantity: number;
     createdAt: string;
     updatedAt: string;
     user?: User;
@@ -18,9 +21,15 @@ export interface Order {
 }
 
 interface AddAllOrders {
-    type: typeof ADD_ORDERS,
+    type: typeof ALL_ORDERS,
     payload: Order[]
+}
+
+interface AddOrders {
+    type: typeof ADD_ORDER,
+    payload: Order;
 }
 
 export type OrderActionTypes =
 | AddAllOrders
+| AddOrders
