@@ -24,7 +24,7 @@ export default function ImageUploader({ uploadPreset, uploadImageUrl }) {
 
   return (
     <div>
-      <Button variant="success" onClick={myCropWidget}>
+      <Button variant="primary" onClick={myCropWidget}>
         Upload picture
       </Button>
     </div>
