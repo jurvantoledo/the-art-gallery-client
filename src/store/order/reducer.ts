@@ -21,11 +21,7 @@ export default (state = initialState, action: OrderActionTypes) => {
     case ADD_ORDER:
         return {
             ...state,
-            orders: {
-                ...state.orders, 
-                ...action.payload
-            },
-            quantity: state.orders
+            orders: {...state.orders, ...action.payload}
         }
       
           default:

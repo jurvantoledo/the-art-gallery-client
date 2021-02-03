@@ -14,6 +14,7 @@ export interface OrderState {
 export interface Order {
     id: number;
     userId?: number;
+    artWorkId?: number;
     quantity?: any;
     createdAt: string;
     updatedAt: string;

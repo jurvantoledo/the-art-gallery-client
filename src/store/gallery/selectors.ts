@@ -8,3 +8,11 @@ export const selectGalleryDetails = (state: RootState) => {
     
     return gallery
 }
+
+
+export const selectArtWorks = (state: RootState) => { 
+    const artWorks = state.galleries.galleryDetails.artWorks
+    console.log(artWorks)
+    
+    return artWorks
+}

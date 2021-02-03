@@ -13,14 +13,7 @@ import {
     Order, 
     OrderActionTypes 
 } from "./types";
-
-export function addOrder(id: number) {
-  return {
-    type: ADD_ORDER,
-    payload: id,
-  };
-}
-
+import { selectToken, selectUser } from "../user/selectors";
 
 const allOrders = (orders: Order[]): OrderActionTypes => {
     return { 
@@ -49,3 +42,45 @@ const allOrders = (orders: Order[]): OrderActionTypes => {
       dispatch(appDoneLoading());
     };
   };
+
+  const addOrder = (newOrder: Order[]): OrderActionTypes => {
+    return { 
+      type: ADD_ORDER, 
+      payload: newOrder 
+    };
+  };
+
+  export const addNewOrder = (
+    artWorkId: number,
+  ) : AppThunk => {
+    return async (dispatch, getState) => {
+      dispatch(appLoading())
+      const token = selectToken(getState())
+      const { id } = selectUser(getState())
+
+      try {
+        const response = await axios.post(`${apiUrl}/order`, 
+        {
+          userId: id,
+          artWorkId,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+        );
+
+        dispatch(addOrder(response.data))
+        dispatch(showMessageWithTimeout("succes", true, "Item succesfully added."))
+        dispatch(appDoneLoading())
+      } catch (error) {
+        if(error.response) {
+          console.log(error.message)
+          dispatch(setMessage("danger", true, error.response.data.message))
+        } else {
+          console.log(error.message)
+          dispatch(setMessage("danger", true, error.message))
+        }
+        dispatch(appDoneLoading());
+      }
+    }
+  }
