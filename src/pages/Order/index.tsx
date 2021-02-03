@@ -10,6 +10,8 @@ import { useParams } from "react-router";
 import { fetchOrders } from "../../store/order/actions"
 import { selectOrders } from "../../store/order/selectors"
 
+import "./order.scss"
+
 interface Parameters {
     id: string;
   }
@@ -37,7 +39,11 @@ export default function Order() {
                     Welcome to your orders {orders.user?.firstName} {" "} {orders.user?.lastName}
                 </h2>
             </Jumbotron>
-            <Container as={Col} md={{ span: 12 }}>
+            <Container 
+            className="order-container"
+            as={Col} 
+            md={{ span: 12 }}
+            >
                 {orders.artWorks?.map((art: { 
                     gallery: any, 
                     name: any, 
@@ -47,7 +53,7 @@ export default function Order() {
                  <Card
                   className="order-card" 
                   as={Col} 
-                  md={{ span: 12 }}
+                  md={{ span: 4 }}
                   >
                   <div 
                   className="order-info">
