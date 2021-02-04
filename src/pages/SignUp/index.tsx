@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { signUp } from "../../store/user/actions";
-import { selectToken } from "../../store/user/selectors";
+import { selectToken, selectUser } from "../../store/user/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
@@ -23,12 +23,17 @@ export default function SignUp() {
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const history = useHistory();
+  const { id } = useSelector(selectUser)
 
   useEffect(() => {
     if (token !== null) {
       history.push("/");
     }
-  }, [token, history]);
+
+    if (token !== null && hasGallery === true) {
+      history.push(`/add-gallery/${id}`);
+    }
+  }, [hasGallery, token, id, history]);
 
   const uploadImageUrl = (url: string) => {
     setImageUrl(url);
@@ -49,7 +54,7 @@ export default function SignUp() {
     setCountry("");
     setCity("");
     setImageUrl("");
-    setHasGallery(false)
+    setHasGallery(true || false)
   }
 
   return (

@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp';
 import Homepage from './pages/Homepage';
 import GalleryInfo from './pages/GalleryInfo';
 import Order from './pages/Order';
+import AddGallery from './pages/AddGallery';
 
 
 function App() {
@@ -45,6 +46,10 @@ function App() {
 
           <Route exact path="/signup">
             <SignUp />
+          </Route>
+
+          <Route exact path="/add-gallery">
+            <AddGallery />
           </Route>
           
         </Switch>

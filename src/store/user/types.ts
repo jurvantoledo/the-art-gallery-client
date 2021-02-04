@@ -26,7 +26,8 @@ export interface User {
     phone?: string;
     country?: string;
     city?: string;
-    imageUrl?: string
+    imageUrl?: string;
+    hasGallery?: boolean;
     createdAt: string;
     updatedAt: string;
 }
@@ -40,6 +41,7 @@ export interface UserWithoutToken {
     country: string;
     city: string;
     imageUrl: string;
+    hasGallery?: boolean;
     createdAt: string;
     updatedAt: string;
 }

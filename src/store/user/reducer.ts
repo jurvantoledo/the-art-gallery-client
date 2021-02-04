@@ -19,6 +19,7 @@ const initialState: UserState = {
     country: undefined,
     city: undefined,
     imageUrl: undefined,
+    hasGallery: undefined,
     createdAt: undefined,
     updatedAt: undefined,
 }
