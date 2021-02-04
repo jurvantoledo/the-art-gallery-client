@@ -26,7 +26,7 @@ export default function SignUp() {
   const { id } = useSelector(selectUser)
 
   useEffect(() => {
-    if (token !== null) {
+    if (token !== null && hasGallery === false) {
       history.push("/");
     }
 
@@ -181,14 +181,14 @@ export default function SignUp() {
           label="Yes"
           name="Radios"
           id="Radio1"
-          onChange={event => setHasGallery(true)}        
+          onChange={() => setHasGallery(true)}        
           />
         <Form.Check
           type="radio"
           label="No"
           name="Radios"
-          id="Radio1"
-          onChange={event => setHasGallery(false)}        
+          id="Radio2"
+          onChange={() => setHasGallery(false)}        
           />
       </Form.Group>
           <Form.Group className="mt-5">
