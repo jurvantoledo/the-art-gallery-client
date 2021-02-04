@@ -138,7 +138,7 @@ export default function SignUp() {
             />
           </Form.Group>
           {!password ? (
-            <p>Please enter a new password.</p>
+            <p>Please retype your password.</p>
           ) : password === checkPassword ? null : (
             <p style={{ color: "red" }}>
               The passwords don't match. Please check again.
