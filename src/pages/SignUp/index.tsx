@@ -19,6 +19,7 @@ export default function SignUp() {
   const [country, setCountry] = useState("");
   const [city, setCity] = useState("");
   const [imageUrl, setImageUrl] = useState("");
+  const [hasGallery, setHasGallery] = useState(false);
   const dispatch = useDispatch();
   const token = useSelector(selectToken);
   const history = useHistory();
@@ -37,7 +38,7 @@ export default function SignUp() {
     event.preventDefault();
 
     dispatch(
-      signUp(firstName, lastName, country, city, imageUrl, email, phone, password)
+      signUp(firstName, lastName, country, city, imageUrl, email, phone, password, hasGallery)
     );
 
     setFirstName("");
@@ -48,6 +49,7 @@ export default function SignUp() {
     setCountry("");
     setCity("");
     setImageUrl("");
+    setHasGallery(false)
   }
 
   return (
@@ -167,6 +169,23 @@ export default function SignUp() {
                 />
               </div>
             ) : null}
+            <Form.Group controlId="formIsOwner">
+        <Form.Label>Do you have a gallery</Form.Label>
+        <Form.Check
+          type="radio"
+          label="Yes"
+          name="Radios"
+          id="Radio1"
+          onChange={event => setHasGallery(true)}        
+          />
+        <Form.Check
+          type="radio"
+          label="No"
+          name="Radios"
+          id="Radio1"
+          onChange={event => setHasGallery(false)}        
+          />
+      </Form.Group>
           <Form.Group className="mt-5">
             {!email || !password ? (
               <p style={{ color: "red" }}>Enter email and password</p>

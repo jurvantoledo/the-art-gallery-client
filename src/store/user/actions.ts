@@ -41,7 +41,8 @@ export const signUp = (
     imageUrl: string,
     email: string,
     phone: string,
-    password: string
+    password: string,
+    hasGallery: boolean
 ) : AppThunk => {
     return async (dispatch, getState) => {
         dispatch(appLoading())
@@ -55,6 +56,7 @@ export const signUp = (
                 city,
                 imageUrl,
                 password,
+                hasGallery
             })
 
             console.log(response.data)
@@ -82,6 +84,7 @@ export const login = (email: string, password: string): AppThunk => {
                 email,
                 password,
             })
+            
             dispatch(loginSucces(response.data))
             dispatch(showMessageWithTimeout("succes", false, "Welcome back!", 1500))
             dispatch(appDoneLoading())

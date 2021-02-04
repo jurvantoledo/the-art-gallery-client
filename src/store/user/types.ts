@@ -12,6 +12,7 @@ export interface UserState {
     country?: string;
     city?: string;
     imageUrl?: string;
+    hasGallery?: boolean;
     createdAt?: string;
     updatedAt?: string;
   }

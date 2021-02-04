@@ -64,7 +64,6 @@ const addAllGalleries = (galleries: Gallery[]): GalleryActionTypes => {
         const response = await axios.get(`${apiUrl}/gallery/${id}`);
         const gallery = response.data.galleries;
         
-        console.log("Action", gallery)
         dispatch(addGalleryDetails(gallery));
       } catch (error) {
         if (error.response) {
