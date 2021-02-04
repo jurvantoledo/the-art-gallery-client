@@ -26,6 +26,7 @@ export default function GalleryInfo() {
     const dispatch = useDispatch()
     const galleryDetails = useSelector(selectGalleryDetails)
     const { token } = useSelector(selectUser)
+    const user = useSelector(selectUser)
     const { id } = params;
 
     useEffect(() => {
@@ -69,13 +70,13 @@ export default function GalleryInfo() {
                     <p><strong>Price:</strong>< br/>
                     {art.price}</p>
                 </div>
-                <Button
+                { galleryDetails.userId === user.id ? <Button
                     className="remove-button" 
                     data-text="Remove"
                     onClick={() => dispatch(deleteArtWork(art.id))}
                     >
                         Remove
-                    </Button>
+                    </Button> : null }
                 {token === null ? <Link to="/login">Login or Create an account to buy art works</Link> 
                 : <Button 
                 className="cart-button" 
