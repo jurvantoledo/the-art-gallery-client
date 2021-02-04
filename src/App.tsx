@@ -48,7 +48,7 @@ function App() {
             <SignUp />
           </Route>
 
-          <Route exact path="/add-gallery">
+          <Route exact path="/add-gallery/:id">
             <AddGallery />
           </Route>
           
