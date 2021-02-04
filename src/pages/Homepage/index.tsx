@@ -39,7 +39,7 @@ export default function Homepage() {
                     <p>{gallery.description}</p>
                 </div>
                  <Link to={`gallery-info/${gallery.id}`}>
-                  <Button>
+                  <Button className="type-3">
                     More Info
                   </Button>
                  </Link>
