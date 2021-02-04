@@ -8,10 +8,12 @@ import {
 } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import AddArtWorkForm from "../../components/AddArtWorkForm";
 import { deleteArtWork, fetchGalleryDetails } from "../../store/gallery/actions"
 import { selectGalleryDetails } from "../../store/gallery/selectors"
 import { addNewOrder } from "../../store/order/actions"
+import { selectUser } from "../../store/user/selectors";
 
 import "./galleryInfo.scss"
 
@@ -23,6 +25,7 @@ export default function GalleryInfo() {
     const params: Parameters = useParams();
     const dispatch = useDispatch()
     const galleryDetails = useSelector(selectGalleryDetails)
+    const { token } = useSelector(selectUser)
     const { id } = params;
 
     useEffect(() => {
@@ -73,14 +76,15 @@ export default function GalleryInfo() {
                     >
                         Remove
                     </Button>
-                <Button 
+                {token === null ? <Link to="/login">Login or Create an account to buy art works</Link> 
+                : <Button 
                 className="cart-button" 
                 variant="dark"
                 onClick={() => dispatch(addNewOrder(art.id))}
 
                 >
                     Buy
-                </Button>
+                </Button> }
                 </Card>
                 )
             })}
