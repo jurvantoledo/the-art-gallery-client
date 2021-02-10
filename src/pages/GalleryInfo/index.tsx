@@ -79,8 +79,7 @@ export default function GalleryInfo() {
                     </Button> : null }
                 {token === null ? <Link to="/login">Login or Create an account to buy art works</Link> 
                 : <Button 
-                className="cart-button" 
-                variant="dark"
+                className="type-3" 
                 onClick={() => dispatch(addNewOrder(art.id))}
 
                 >
