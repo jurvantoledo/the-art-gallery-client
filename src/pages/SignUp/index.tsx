@@ -174,7 +174,7 @@ export default function SignUp() {
                 />
               </div>
             ) : null}
-            <Form.Group controlId="formIsOwner">
+            <Form.Group controlId="formIsOwner" className="hasGallery">
         <Form.Label>Do you have a gallery</Form.Label>
         <Form.Check
           type="radio"

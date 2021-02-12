@@ -2,6 +2,7 @@ export const LOGIN_SUCCES = "LOGIN_SUCCES"
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID"
 export const LOG_OUT = "LOG_OUT"
 
+
 export interface UserState {
     token?: string;
     id?: number;

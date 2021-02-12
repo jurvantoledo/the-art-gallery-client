@@ -3,6 +3,7 @@ import { User } from "../user/types"
 
 export const ADD_ALL_GALLERIES = "ADD_ALL_GALLERIES"
 export const ADD_GALLERY_DETAILS = "ADD_GALLERY_DETAILS"
+export const ADD_NEW_GALLERY = "ADD_NEW_GALLERY"
 export const ADD_NEW_ARTWORK = "ADD_NEW_ARTWORK"
 export const REMOVE_ARTWORK = "REMOVE_ARTWORK"
 
@@ -33,6 +34,11 @@ interface AddGalleryDetailsAction {
     payload: Gallery;
   }
 
+  interface AddNewGalleryAction {
+    type: typeof ADD_NEW_GALLERY,
+    payload: Gallery;
+}
+
   interface AddNewArtWorkAction {
     type: typeof ADD_NEW_ARTWORK,
     payload: ArtWorks;
@@ -46,6 +52,7 @@ interface RemoveArtWorkAction {
 export type GalleryActionTypes =
 | AddAllGalleriesAction
 | AddGalleryDetailsAction
+| AddNewGalleryAction
 | AddNewArtWorkAction
 | RemoveArtWorkAction
  

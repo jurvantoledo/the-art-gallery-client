@@ -15,7 +15,12 @@ import {
     UserActionTypes,
 } from "./types"
 import { AppThunk } from "../types"
-import { selectToken } from "./selectors";
+import { selectToken, selectUser } from "./selectors";
+import { 
+    Gallery, 
+    GalleryActionTypes, 
+    ADD_NEW_GALLERY 
+} from "../gallery/types";
 
 const loginSucces = ( userWithToken: User): UserActionTypes => {
     return {
@@ -130,3 +135,48 @@ export const getUserWithStoredToken = (): AppThunk => {
         }
     }
 }
+
+const addNewGallery = (newGallery: Gallery): GalleryActionTypes => {
+    return { 
+      type: ADD_NEW_GALLERY, 
+      payload: newGallery 
+    };
+  };
+
+  export const submitNewGallery = (
+    name: string,
+    description: string,
+    imageUrl: string,
+  ) : AppThunk => {
+    return async (dispatch, getState) => {
+      dispatch(appLoading())
+      const token = selectToken(getState())
+      const { id } = selectUser(getState())
+
+      try {
+        const response = await axios.post(`${apiUrl}/${id}`, 
+        {
+          name,
+          description,
+          imageUrl,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+        );
+
+        dispatch(addNewGallery(response.data))
+        dispatch(showMessageWithTimeout("succes", true, "Item succesfully added."))
+        dispatch(appDoneLoading())
+      } catch (error) {
+        if(error.response) {
+          console.log(error.message)
+          dispatch(setMessage("danger", true, error.response.data.message))
+        } else {
+          console.log(error.message)
+          dispatch(setMessage("danger", true, error.message))
+        }
+        dispatch(appDoneLoading());
+      }
+    }
+  }

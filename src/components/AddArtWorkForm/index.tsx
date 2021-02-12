@@ -103,7 +103,7 @@ export default function AddArtWorkForm() {
                  </Form.Group>
                 <Form.Group className="submit-btn">
                  <Button variant="primary" type="submit" onClick={submitForm}>
-                   Submit changes
+                   Submit art
                  </Button>
                 </Form.Group>
                 </Form>
